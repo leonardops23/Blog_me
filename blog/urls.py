@@ -1,12 +1,13 @@
 from django.urls import path, include
-from rest_framework import routers
-from blog import views
+from rest_framework.routers import DefaultRouter
+from .views import CategoriaViewSet
 
 
-router = routers.DefaultRouter()
-router.register(r'blog', views.TaskView, 'blog')
+# campos el router para la api
+router = DefaultRouter()
+router.register(r'categorias', CategoriaViewSet)
 
 
 urlpatterns = [
-    path("api/v1", include(router.urls))
+    path('api/', include(router.urls))
 ]
