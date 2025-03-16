@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import Header from './components/Header'
 
 const App = () => {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:8000')
-      .then(response => {
-        setMessage(response.data.message);
-      })
-      .catch(error => {
-        console.error("Error fetching data: ", error);
-      });
-  }, []);
-
   return (
-    <div>
-      <h1>Frontend React dice: ¡Hola Mundo!</h1>
-      <p>Backend Django responde: {message}</p>
-    </div>
+    <Router>
+      <div className='App'>
+        <Header />
+        <main className='container mx-auto py-6 px-4'>
+          <Routes>
+            <Route path='/' element={<HomePage/>} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 };
 
