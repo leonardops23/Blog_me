@@ -25,12 +25,21 @@ const Header = () => {
     <header className="bg-white shadow-md py-4">
       <div className="container mx-auto px-4">
         <nav>
+          <span>
+            <Link 
+              to="/"
+              className="text-xl font-semibold text-blue-950 hover:text-blue-600 transition-colors duration-200"
+            >
+              Inicio
+            </Link>
+          </span>
           <ul className="flex gap-5 items-center justify-center">
             {categorias.map(categoria => (
               <li key={categoria.id}>
                 <Link 
                   to={`/categoria/${categoria.slug}`}
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                  className="text-lg font-semibold text-gray-700 hover:text-blue-600 transition-colors duration-200"
+
                 >
                   {categoria.nombre}
                 </Link>
