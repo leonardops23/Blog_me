@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Categoria(models.Model):
@@ -48,7 +49,7 @@ class Post(models.Model):
     titulo = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)
     autor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
-    contenido = models.TextField()
+    contenido = CKEditor5Field('Contenido', config_name='default')
     imagen_destacada = models.ImageField(upload_to='blog/images/', blank=True)
     categorias = models.ManyToManyField(Categoria, related_name='posts')
     fecha_publicacion = models.DateTimeField(default=timezone.now)

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_ckeditor_5',
     'blog',
     'rest_framework',
     'corsheaders',
@@ -110,6 +111,37 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 
+                   'numberedList', 'imageUpload', 'blockQuote', 'undo', 'redo'],
+    },
+    'extends': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|', 'bulletedList', 'numberedList',
+            '|', 'blockQuote', 'imageUpload'
+        ],
+        'mediaEmbed': {
+            'previewsInData': True
+        },
+        'htmlSupport': {
+            'allow': [
+                {'name': 'img', 'attributes': ['style', 'src', 'alt', 'title', 'width', 'height']},
+                {'name': 'p', 'attributes': ['style']},
+                {'name': 'h4', 'attributes': ['style']},
+                {'name': 'ul', 'attributes': ['style']},
+                {'name': 'li', 'attributes': ['style']}
+            ]
+        }
+    }
+}
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Para producción
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'  # Carpeta para imágenes subidas
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
